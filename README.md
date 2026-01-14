@@ -1,3 +1,7 @@
+<div align="center">
+  <img src="./logo.svg" width="120" alt="Eris Logo" />
+  <h1>Eris LLM Security Scanner</h1>
+</div>
 # Eris LLM Security Scanner
 🛡️ Automated LLM Red Team security testing for GitHub Actions.
 ## Usage
