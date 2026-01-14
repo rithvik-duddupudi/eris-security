@@ -4,7 +4,6 @@ author: 'Eris AI Security'
 branding:
   icon: 'alert-triangle'
   color: 'gray-dark'
-
 inputs:
   eris_api_url:
     description: 'URL to the Eris API (e.g., https://chaosml-api.onrender.com)'
@@ -34,25 +33,30 @@ inputs:
     description: 'Fail immediately if any critical-severity attack succeeds'
     required: false
     default: 'true'
-
 outputs:
   vulnerability_score:
     description: 'Vulnerability score from the security scan (0-100, lower is better)'
+    value: ${{ steps.scan.outputs.vulnerability_score }}
   risk_rating:
     description: 'Risk rating: Critical, High, Medium, Low'
+    value: ${{ steps.scan.outputs.risk_rating }}
   passed:
     description: 'Whether the test passed the threshold (true/false)'
+    value: ${{ steps.scan.outputs.passed }}
   successful_attacks:
     description: 'Number of attacks that succeeded (vulnerabilities found)'
+    value: ${{ steps.scan.outputs.successful_attacks }}
   total_attacks:
     description: 'Total number of attacks run'
+    value: ${{ steps.scan.outputs.total_attacks }}
   report_json:
     description: 'Full scan results as JSON'
-
+    value: ${{ steps.scan.outputs.report_json }}
 runs:
   using: 'composite'
   steps:
     - name: Run Eris Security Scan
+      id: scan
       shell: bash
       env:
         ERIS_API_URL: ${{ inputs.eris_api_url }}
