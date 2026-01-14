@@ -2,8 +2,8 @@ name: 'Eris LLM Security Scan'
 description: 'Automated LLM security testing with Red Team attacks. Gate deployments based on vulnerability scores.'
 author: 'Eris AI Security'
 branding:
-  icon: 'shield'
-  color: 'red'
+  icon: 'alert-triangle'
+  color: 'gray-dark'
 
 inputs:
   eris_api_url:
