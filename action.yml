@@ -1,0 +1,66 @@
+name: 'Eris LLM Security Scan'
+description: 'Automated LLM security testing with Red Team attacks. Gate deployments based on vulnerability scores.'
+author: 'Eris AI Security'
+branding:
+  icon: 'shield'
+  color: 'red'
+
+inputs:
+  eris_api_url:
+    description: 'URL to the Eris API (e.g., https://chaosml-api.onrender.com)'
+    required: true
+  eris_api_key:
+    description: 'Eris API key for authentication'
+    required: true
+  llm_provider:
+    description: 'LLM provider to test: openai, gemini, anthropic'
+    required: true
+  llm_api_key:
+    description: 'API key for the LLM provider being tested'
+    required: true
+  llm_model:
+    description: 'Model name to test (e.g., gpt-4, gemini-pro)'
+    required: false
+    default: ''
+  vulnerability_threshold:
+    description: 'Maximum acceptable vulnerability score (0-100). Workflow fails if above this.'
+    required: false
+    default: '30'
+  attack_categories:
+    description: 'Comma-separated attack categories: jailbreak,prompt_injection,data_exfiltration,policy_bypass,manipulation,hallucination'
+    required: false
+    default: ''
+  fail_on_critical:
+    description: 'Fail immediately if any critical-severity attack succeeds'
+    required: false
+    default: 'true'
+
+outputs:
+  vulnerability_score:
+    description: 'Vulnerability score from the security scan (0-100, lower is better)'
+  risk_rating:
+    description: 'Risk rating: Critical, High, Medium, Low'
+  passed:
+    description: 'Whether the test passed the threshold (true/false)'
+  successful_attacks:
+    description: 'Number of attacks that succeeded (vulnerabilities found)'
+  total_attacks:
+    description: 'Total number of attacks run'
+  report_json:
+    description: 'Full scan results as JSON'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Run Eris Security Scan
+      shell: bash
+      env:
+        ERIS_API_URL: ${{ inputs.eris_api_url }}
+        ERIS_API_KEY: ${{ inputs.eris_api_key }}
+        LLM_PROVIDER: ${{ inputs.llm_provider }}
+        LLM_API_KEY: ${{ inputs.llm_api_key }}
+        LLM_MODEL: ${{ inputs.llm_model }}
+        VULNERABILITY_THRESHOLD: ${{ inputs.vulnerability_threshold }}
+        ATTACK_CATEGORIES: ${{ inputs.attack_categories }}
+        FAIL_ON_CRITICAL: ${{ inputs.fail_on_critical }}
+      run: ${{ github.action_path }}/run.sh
