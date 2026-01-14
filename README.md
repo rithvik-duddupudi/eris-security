@@ -6,7 +6,7 @@
 </div>
 <br />
 
-## 🚀 Usage
+## Usage
 ```yaml
 - name: Eris Security Scan
   uses: rithvik-duddupudi/eris-security@v1
@@ -18,7 +18,7 @@
     vulnerability_threshold: 30
 ```
 
-## ⚙️ Inputs
+## Inputs
 
 | Input | Required | Description |
 |-------|----------|-------------|
@@ -29,7 +29,7 @@
 | \`llm_model\` | ❌ | Specific model tag (e.g., \`gpt-4\`) |
 | \`vulnerability_threshold\` | ❌ | Max score (0-100) before failing. Default: \`30\` |
 
-## 📊 Outputs
+## Outputs
 
 | Output | Description |
 |--------|-------------|
