@@ -5,6 +5,7 @@
   <p>Shield your LLM applications from jailbreaks, prompt injections, and data leaks.<br/>Gate your deployments based on automated vulnerability scoring.</p>
 </div>
 <br />
+
 ## 🚀 Usage
 ```yaml
 - name: Eris Security Scan
@@ -15,6 +16,7 @@
     llm_provider: openai
     llm_api_key: ${{ secrets.OPENAI_API_KEY }}
     vulnerability_threshold: 30
+```
 
 ## ⚙️ Inputs
 
