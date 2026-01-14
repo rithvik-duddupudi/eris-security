@@ -4,21 +4,17 @@
   <p><strong>Automated Red Team security testing for your CI/CD pipeline.</strong></p>
   <p>Shield your LLM applications from jailbreaks, prompt injections, and data leaks.<br/>Gate your deployments based on automated vulnerability scoring.</p>
 </div>
-
 <br />
-
 ## 🚀 Usage
-
-\`\`\`yaml
+```yaml
 - name: Eris Security Scan
   uses: rithvik-duddupudi/eris-security@v1
   with:
-    eris_api_url: https://chaosml-api.onrender.com
-    eris_api_key: \${{ secrets.ERIS_API_KEY }}
+    eris_api_url: [https://chaosml-api.onrender.com](https://chaosml-api.onrender.com)
+    eris_api_key: ${{ secrets.ERIS_API_KEY }}
     llm_provider: openai
-    llm_api_key: \${{ secrets.OPENAI_API_KEY }}
+    llm_api_key: ${{ secrets.OPENAI_API_KEY }}
     vulnerability_threshold: 30
-\`\`\`
 
 ## ⚙️ Inputs
 
